@@ -1,9 +1,6 @@
 import sys
 import math
 
-# Auto-generated code below aims at helping you parse
-# the standard input according to the problem statement.
-
 n = int(input())  # the number of temperatures to analyse
 
 
@@ -24,27 +21,22 @@ def close_zero():
             neg.append(li[i])
         else:
             j = 0
-        
-    if len(pos) == 0:
-        pos.append(10000)
-    elif len(neg) == 0:
-        neg.append(10000)
+            
     pos = sorted(pos)
-    res_neg = [abs(i) for i in neg]
-    res_neg = sorted(res_neg)
+    neg = sorted(neg)
     
     if j == 0:
         print(j)
-    elif pos[0] == 0:
-        print(0)
-    elif res_neg[0] == 0:
-        print(0)
-    elif pos[0] == res_neg[0]:
+    elif len(pos) == 0:
+        print(neg[-1])
+    elif len(neg) == 0:
         print(pos[0])
-    elif pos[0] < res_neg[0]:
+    elif pos[0] == abs(neg[-1]):
+        print(pos[0])
+    elif pos[0] < abs(neg[-1]):
         print(pos[0])
     else:
-        print(-res_neg[0])
+        print(-abs(neg[-1]))
     
         
 if n == 0:
